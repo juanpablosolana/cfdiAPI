@@ -1,4 +1,4 @@
-import {useState,useEffect } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const Form = () => {
@@ -23,36 +23,28 @@ const Form = () => {
         setLoading(false)
       })
       .catch(err => console.log(err));
-}
+  }
   return (
-    <>
-    <form id="api-form"onSubmit={handleSubmit(onSubmit)}>
-      <label >RFC Emisor sin guiones </label>
-      <input {...register("RFCEmisor", { required: true, minLength: 12, maxLength: 12 })} />
-      {errors.exampleRequired && <span>This field is required</span>}
-      <label >RFC Receptor sin guiones </label>
-      <input {...register("RFCReceptor", { required: true })} />
-      {errors.exampleRequired && <span>This field is required</span>}
-      <label >Total con centavos </label>
-      <input type="number" step="0.01" {...register("Monto", { required: true, min: 0 })} />
-      {errors.exampleRequired && <span>This field is required</span>}
-      <label >UUID tal cual parece en la factura </label>
-      <input {...register("UUID", { required: true, minLength: 36, maxLength: 36 })} />
-      {errors.exampleRequired && <span>This field is required</span>}
-
-      <input type="submit" />
-    </form>
-    {
-      status?(
-      <>
-      <h1>Estatus: {status}</h1>
-      <h2>Código: {statusCode} </h2>
-      <h2>Es cancelable: {cancelCode}</h2>
-      </>
-      ):loading
-    }
-
-    </>
+    <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8">
+        <form id="api-form" className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
+          <input placeholder="RFC Emisor" className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"  {...register("RFCEmisor", { required: true, minLength: 12, maxLength: 12 })} />
+          <input placeholder="RFC Receptor" className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" {...register("RFCReceptor", { required: true })} />
+          <input placeholder="Total con centavos" className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" type="number" step="0.01" {...register("Monto", { required: true, min: 0 })} />
+          <input placeholder="UUID tal como aparece en la factura" className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" {...register("UUID", { required: true, minLength: 36, maxLength: 36 })} />
+          <input type="submit" className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" />
+        </form>
+        {
+          status ? (
+            <>
+              <h1>Estatus: {status}</h1>
+              <h2>Código: {statusCode} </h2>
+              <h2>Es cancelable: {cancelCode}</h2>
+            </>
+          ) : loading
+        }
+      </div>
+    </div>
   )
 }
 export default Form;

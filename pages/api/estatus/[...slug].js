@@ -4,11 +4,11 @@ import soapRequest from 'easy-soap-request';
 export default function handler(req, res) {
   const values = new Object();
   const { slug } = req.query
-  console.log(slug.length)
+  // console.log(slug.length)
   slug.length == 4 ? (slug.map((data, i) => {
     data = data.toString().toLowerCase().replace(/&/gi, '&amp;').replace(/ñ/gi, '&ntilde;')
     values[i] = data
-  })):res.status(400).json({error: 'El slug debe contener 4 campos'})
+  })) : res.status(400).json({ error: 'Bad request'})
 
 
   const url = 'https://consultaqr.facturaelectronica.sat.gob.mx/ConsultaCFDIService.svc';
