@@ -1,17 +1,24 @@
-import {useState } from "react";
+import {useState,useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 const Form = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [status, setStatus] = useState("")
+  const [loading, setLoading] = useState(false)
 
-  const onSubmit = data => {
+  useEffect(() => {
+
+  }, [status]);
+
+  const onSubmit = async data => {
+    setLoading(true)
     const URL = `/api/estatus/${data.RFCEmisor}/${data.RFCReceptor}/${data.Monto}/${data.UUID}`
     // console.log(URL);
-    fetch(URL)
+   await fetch(URL)
       .then(res => res.json())
       .then(data => {
         setStatus(data['s:Envelope']['s:Body']['ConsultaResponse']['ConsultaResult']['a:Estado']['_text'])
+        setLoading(false)
       })
       .catch(err => console.log(err));
 }
@@ -33,7 +40,7 @@ const Form = () => {
 
       <input type="submit" />
     </form>
-    <h1>Estatus: {status||'Ingresa los datos solicitados'}</h1>
+    <h1>Estatus: {status?status:loading}</h1>
     </>
   )
 }
