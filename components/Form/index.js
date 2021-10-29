@@ -33,7 +33,7 @@ const Form = () => {
 
       <input type="submit" />
     </form>
-    <h1>{status||'Ingresa los datos solicitados'}</h1>
+    <h1>Estatus: {status||'Ingresa los datos solicitados'}</h1>
     </>
   )
 }
