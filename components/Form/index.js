@@ -3,28 +3,30 @@ import { useForm } from "react-hook-form";
 
 const Form = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const [status, setStatus] = useState("")
+  const [status, setStatus] = useState(null)
+  const [statusCode, setStatusCode] = useState("")
+  const [cancelCode, setCancelCode] = useState("")
   const [loading, setLoading] = useState(false)
 
-  useEffect(() => {
-
-  }, [status]);
-
-  const onSubmit = async data => {
+  const onSubmit = data => {
     setLoading(true)
+    setStatus(null)
     const URL = `/api/estatus/${data.RFCEmisor}/${data.RFCReceptor}/${data.Monto}/${data.UUID}`
     // console.log(URL);
-   await fetch(URL)
+    fetch(URL)
       .then(res => res.json())
       .then(data => {
         setStatus(data['s:Envelope']['s:Body']['ConsultaResponse']['ConsultaResult']['a:Estado']['_text'])
+        setStatusCode(data['s:Envelope']['s:Body']['ConsultaResponse']['ConsultaResult']['a:CodigoEstatus']['_text'])
+        setCancelCode(data['s:Envelope']['s:Body']['ConsultaResponse']['ConsultaResult']['a:EsCancelable']['_text'])
+        document.getElementById("api-form").reset();
         setLoading(false)
       })
       .catch(err => console.log(err));
 }
   return (
     <>
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form id="api-form"onSubmit={handleSubmit(onSubmit)}>
       <label >RFC Emisor sin guiones </label>
       <input {...register("RFCEmisor", { required: true, minLength: 12, maxLength: 12 })} />
       {errors.exampleRequired && <span>This field is required</span>}
@@ -40,7 +42,16 @@ const Form = () => {
 
       <input type="submit" />
     </form>
-    <h1>Estatus: {status?status:loading}</h1>
+    {
+      status?(
+      <>
+      <h1>Estatus: {status}</h1>
+      <h2>Código: {statusCode} </h2>
+      <h2>Es cancelable: {cancelCode}</h2>
+      </>
+      ):loading
+    }
+
     </>
   )
 }
