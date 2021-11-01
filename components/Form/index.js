@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-
+import Spinner from '../Spinner'
 const Form = () => {
   const { register, handleSubmit } = useForm();
   const [status, setStatus] = useState(null)
@@ -12,7 +12,6 @@ const Form = () => {
     setLoading(true)
     setStatus(null)
     const URL = `/api/estatus/${data.RFCEmisor}/${data.RFCReceptor}/${data.Monto}/${data.UUID}`
-    // console.log(URL);
     fetch(URL)
       .then(res => res.json())
       .then(data => {
@@ -23,7 +22,10 @@ const Form = () => {
         document.getElementById("rfc").focus();
         setLoading(false)
       })
-      .catch(err => console.log(err));
+      .catch(err =>{
+        setStatus(err)
+        setLoading(false)
+      })
   }
   return (
     <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -36,23 +38,13 @@ const Form = () => {
           <input id= "submit"type="submit" className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" />
         </form>
         {
-          status ? (
+          status ?
             <div className={status === 'Vigente' ? "bg-green-100 border-l-4 border-green-500 text-green-700 p-4" : "bg-red-100 border-l-4 border-red-500 text-red-700 p-4"}>
               <h1>Estatus: {status}</h1>
               <h2>Código: {statusCode} </h2>
               <h2>Es cancelable: {cancelCode}</h2>
             </div>
-          ) : loading ? <div className="flex justify-center items-center">
-            <div
-              className="
-                animate-spin
-                rounded-full
-                h-32
-                w-32
-                border-t-2 border-b-2 border-purple-500
-              "
-            ></div>
-          </div>: null
+           : loading ? <Spinner/>: null
         }
       </div>
     </div>

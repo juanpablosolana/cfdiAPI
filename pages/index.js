@@ -14,11 +14,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <main>
-        <h1>Verificación de comprobantes fiscales digitales por internet</h1>
-      </main>
       {/* <Supabase/> */}
-      <Form/>
+      {/* <Form/> */}
       <footer >
         <a
           href="https://pablosolana.dev"
