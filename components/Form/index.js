@@ -30,7 +30,7 @@ const Form = () => {
   return (
     <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 ">
       <div className="max-w-md w-full space-y-8 ">
-        <label className="flex justify-center">Ingresa los datos de la factura</label>
+        <label className="flex justify-center text-gray-800 ml-1">Ingresa los datos de la factura</label>
         <form id="api-form" className="mt-8 space-y-6 " onSubmit={handleSubmit(onSubmit)}>
           <input placeholder="RFC Emisor" id="rfc" className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"  {...register("RFCEmisor", { required: true, minLength: 12, maxLength: 15 })} />
           <input placeholder="RFC Receptor" className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" {...register("RFCReceptor", { required: true, minLength: 12, maxLength: 15 })} />
