@@ -55,9 +55,6 @@ const Header = () => {
                   <a href="#" className="font-medium text-gray-500 hover:text-gray-900">Legales</a>
                   <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">Entrar</a>
                 </div>
-                <a href="#" className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100">
-                  Log in
-                </a>
               </div>
             </div>
           </div>
@@ -87,7 +84,7 @@ const Header = () => {
           </main>
         </div>
       </div>
-      <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+      <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-indigo-300">
         <Form />
       </div>
     </div>
