@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Header from '../components/Header'
-import UploadFile from '../components/UploadFile'
+// import UploadFile from '../components/UploadFile'
 import Footer from '../components/Footer'
 
 

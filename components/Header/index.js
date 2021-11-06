@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import Form from '../Form'
 
 const Header = () => {
@@ -29,7 +30,7 @@ const Header = () => {
                   </div>
                 </div>
                 <div className="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
-                  <a href="#" className="font-medium text-gray-500 hover:text-gray-900">Nuestra API</a>
+                  {/* <Link href="nuestra-api" className="font-medium text-gray-500 hover:text-gray-900"><a>Nuestra API</a></Link> */}
                   <a href="#" className="font-medium text-gray-500 hover:text-gray-900">Legales</a>
                   <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">Entrar</a>
                 </div>
