@@ -4,11 +4,18 @@ import ReactDOM from "react-dom";
 function HelpInfo({ state, setState }) {
   const [isBrowser, setIsBrowser] = useState(false);
 
+
+
   useEffect(() => {
     setIsBrowser(state);
   }, [state]);
 
+  function isClose() {
+    setIsBrowser(false)
+    setState(false)
+  }
   if (isBrowser) {
+
     return ReactDOM.createPortal(
 
       <div className="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -18,7 +25,7 @@ function HelpInfo({ state, setState }) {
           <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
             <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
               <div className="sm:flex sm:items-start">
-                <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10" onClick={_ => { setIsBrowser(false), setState(false) }}>
+                <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-300 sm:mx-0 sm:h-10 sm:w-10" onClick={isClose}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="512"
@@ -34,21 +41,21 @@ function HelpInfo({ state, setState }) {
                 </div>
                 <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                   <h3 className="text-lg leading-6 font-medium text-indigo-700" id="modal-title">
-                    Busca en la factura lo siguientes datos
+                    Busca en la factura la siguiente información:
                   </h3>
                   <div className="mt-2">
                     <ul className="text-sm text-gray-500">
                       <li>
-                       - RFC del emisor : Es el nombre del negocio que emite la factura
+                        - RFC del emisor : Es el RFC del negocio que emite la factura
                       </li>
                       <li>
-                       - RFC del receptor : Debe ser tu RFC o el del que hace la compra
+                        - RFC del receptor : Debe ser tu RFC o del que hace la compra
                       </li>
                       <li>
-                       - Total : Con centavos
+                        - Total : Con centavos
                       </li>
                       <li>
-                       - Folio fiscal : Debes ingresarlo tal como aparece en la factura.
+                        - Folio fiscal : Debes ingresarlo tal como aparece en la factura.
                       </li>
                     </ul>
                     <section>
@@ -67,11 +74,20 @@ function HelpInfo({ state, setState }) {
                           Folio fiscal: 49E87987-F780-42B2-AA23-4385D7CA1D75
                         </li>
                       </ul>
-                      <a href="http://transparencia.hidalgo.gob.mx/descargables/ENTIDADES/OperadoraEventosEH/48r/ComunicacionS/2018/4trim/facturas/C-035.pdf" target="_blank" rel="noopener noreferrer" className="text-indigo-700	">
-                        Fuente
-                      </a>
                     </section>
                   </div>
+                </div>
+              </div>
+              <div className="mt-3 sm:mt-4 sm:flex sm:justify-center lg:justify-start">
+                <div className="rounded-md shadow">
+                  <a href="#" className="w-full flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+                    Probar ejemplo
+                  </a>
+                </div>
+                <div className="mt-2 sm:mt-0 sm:ml-2" onClick={isClose}>
+                  <a href="http://transparencia.hidalgo.gob.mx/descargables/ENTIDADES/OperadoraEventosEH/48r/ComunicacionS/2018/4trim/facturas/C-035.pdf" target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10">
+                    Ver factura en pdf
+                  </a>
                 </div>
               </div>
             </div>
