@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Header from '../components/Header'
 // import UploadFile from '../components/UploadFile'
 import Footer from '../components/Footer'
+// import HelpInfo from '../components/HelpInfo'
 
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       </Head>
       {/* <UploadFile /> */}
       <Header />
+      {/* <HelpInfo /> */}
       {/* <Supabase/> */}
       <Footer />
     </div>
