@@ -1,23 +1,12 @@
-import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-
 function HelpInfo({ state, setState }) {
-  const [isBrowser, setIsBrowser] = useState(false);
-
-
-
-  useEffect(() => {
-    setIsBrowser(state);
-  }, [state]);
 
   function isClose() {
-    setIsBrowser(false)
     setState(false)
   }
-  if (isBrowser) {
+  if (state) {
 
     return ReactDOM.createPortal(
-
       <div className="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
           <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
@@ -45,34 +34,18 @@ function HelpInfo({ state, setState }) {
                   </h3>
                   <div className="mt-2">
                     <ul className="text-sm text-gray-500">
-                      <li>
-                        - RFC del emisor : Es el RFC del negocio que emite la factura
-                      </li>
-                      <li>
-                        - RFC del receptor : Debe ser tu RFC o del que hace la compra
-                      </li>
-                      <li>
-                        - Total : Con centavos
-                      </li>
-                      <li>
-                        - Folio fiscal : Debes ingresarlo tal como aparece en la factura.
-                      </li>
+                      <li> - RFC del emisor : Es el RFC del negocio que emite la factura </li>
+                      <li> - RFC del receptor : Debe ser tu RFC o del que hace la compra </li>
+                      <li> - Total : Con centavos </li>
+                      <li>- Folio fiscal : Debes ingresarlo tal como aparece en la factura </li>
                     </ul>
                     <section>
                       <h3 className="text-indigo-500">Ejemplo:</h3>
                       <ul>
-                        <li>
-                          RFC emisor: RTU111018SV3
-                        </li>
-                        <li>
-                          RFC receptor: OEE0508161P7
-                        </li>
-                        <li>
-                          Total con centavos : 34,800.00
-                        </li>
-                        <li>
-                          Folio fiscal: 49E87987-F780-42B2-AA23-4385D7CA1D75
-                        </li>
+                        <li>RFC emisor: RTU111018SV3</li>
+                        <li>RFC receptor: OEE0508161P7</li>
+                        <li>Total con centavos : 34800.00</li>
+                        <li>Folio fiscal: 49E87987-F780-42B2-AA23-4385D7CA1D75</li>
                       </ul>
                     </section>
                   </div>
@@ -99,7 +72,6 @@ function HelpInfo({ state, setState }) {
   } else {
     return null;
   }
-
 }
 
 export default HelpInfo;

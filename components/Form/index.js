@@ -19,7 +19,7 @@ const Form = () => {
         setStatusCode(data['s:Envelope']['s:Body']['ConsultaResponse']['ConsultaResult']['a:CodigoEstatus']['_text'])
         setCancelCode(data['s:Envelope']['s:Body']['ConsultaResponse']['ConsultaResult']['a:EsCancelable']['_text'])
         document.getElementById("api-form").reset();
-        document.getElementById("rfc").focus();
+        document.getElementById("rfcEmisor").focus();
         setLoading(false)
       })
       .catch(err =>{
@@ -32,7 +32,7 @@ const Form = () => {
       <div className="max-w-md w-full space-y-8 ">
         <label className="flex justify-center text-gray-800 ml-1">Ingresa los datos de la factura</label>
         <form id="api-form" className="mt-8 space-y-6 " onSubmit={handleSubmit(onSubmit)}>
-          <input placeholder="RFC Emisor" id="rfc" className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"  {...register("RFCEmisor", { required: true, minLength: 12, maxLength: 15 })} />
+          <input placeholder="RFC Emisor" id="rfcEmisor" value ="Rfc"className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"  {...register("RFCEmisor", { required: true, minLength: 12, maxLength: 15 })} />
           <input placeholder="RFC Receptor" className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" {...register("RFCReceptor", { required: true, minLength: 12, maxLength: 15 })} />
           <input placeholder="Total con centavos" className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" type="number" step="0.01" {...register("Monto", { required: true, min: 0 })} />
           <input placeholder="Folio fiscal / UUID tal como aparece en la factura" className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" {...register("UUID", { required: true, minLength: 36, maxLength: 36 })} />
