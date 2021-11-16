@@ -96,7 +96,7 @@ const Header = () => {
         </div>
       </div>
       <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-indigo-300">
-        <Form rfcEmisor={rfcEmisor} rfcReceptor={rfcReceptor} total={total} folioFiscal={folioFiscal} example={example}/>
+        <Form rfcEmisor={rfcEmisor} rfcReceptor={rfcReceptor} total={total} folioFiscal={folioFiscal} example={example} setExample={setExample}/>
       </div>
     </div>
   )

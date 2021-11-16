@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Spinner from '../Spinner'
 
-const Form = ({rfcEmisor,rfcReceptor,total,folioFiscal, example}) => {
+const Form = ({rfcEmisor,rfcReceptor,total,folioFiscal, example, setExample}) => {
   const { register, handleSubmit, reset, setValue  } = useForm({ mode: 'onBlur' });
   const [status, setStatus] = useState(null)
   const [statusCode, setStatusCode] = useState("")
@@ -11,17 +11,17 @@ const Form = ({rfcEmisor,rfcReceptor,total,folioFiscal, example}) => {
 
   useEffect(() => {
     if (example) {
-      setValue("RFCEmisor", `${rfcEmisor}`);
-      setValue("RFCReceptor", `${rfcReceptor}`);
-      setValue("Monto", `${total}`);
-      setValue("UUID", `${folioFiscal}`);
+      setValue("rfcEmisor", `${rfcEmisor}`);
+      setValue("rfcReceptor", `${rfcReceptor}`);
+      setValue("total", `${total}`);
+      setValue("folioFiscal", `${folioFiscal}`);
     }
   }, [example]);
 
   const onSubmit = data => {
     setLoading(true)
     setStatus(null)
-    const URL = `/api/estatus/${data.RFCEmisor}/${data.RFCReceptor}/${data.Monto}/${data.UUID}`
+    const URL = `/api/estatus/${data.rfcEmisor}/${data.rfcReceptor}/${data.total}/${data.folioFiscal}`
     // const example = `/api/estatus/${rfcEmisor}/${rfcReceptor}/${total}/${folioFiscal}`
     fetch(URL)
       .then(res => res.json())
@@ -33,6 +33,7 @@ const Form = ({rfcEmisor,rfcReceptor,total,folioFiscal, example}) => {
         reset()
         document.getElementById("rfcEmisor").focus();
         setLoading(false)
+        setExample(false)
       })
       .catch(err =>{
         setStatus(err)
@@ -48,21 +49,21 @@ const Form = ({rfcEmisor,rfcReceptor,total,folioFiscal, example}) => {
           placeholder="RFC Emisor"
           id="rfcEmisor"
           className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-          {...register("RFCEmisor", { required: true, minLength: 12, maxLength: 15 })}/>
+          {...register("rfcEmisor", { required: true, minLength: 12, maxLength: 15 })}/>
           <input
           placeholder="RFC Receptor"
           className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-          {...register("RFCReceptor", { required: true, minLength: 12, maxLength: 15 })} />
+          {...register("rfcReceptor", { required: true, minLength: 12, maxLength: 15 })} />
           <input
           placeholder="Total con centavos"
           className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
           type="number"
           step="0.01"
-          {...register("Monto", { required: true, min: 0 })} />
+          {...register("total", { required: true, min: 0 })} />
           <input
-          placeholder="Folio fiscal / UUID tal como aparece en la factura"
+          placeholder="Folio fiscal / folioFiscal tal como aparece en la factura"
           className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-          {...register("UUID", { required: true, minLength: 36, maxLength: 36 })} />
+          {...register("folioFiscal", { required: true, minLength: 36, maxLength: 36 })} />
           <input
           id= "submit"
           type="submit"
