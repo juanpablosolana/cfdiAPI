@@ -21,6 +21,7 @@ const Form = ({rfcEmisor,rfcReceptor,total,folioFiscal, example, setExample}) =>
   const onSubmit = data => {
     setLoading(true)
     setStatus(null)
+    setExample(false)
     const URL = `/api/estatus/${data.rfcEmisor}/${data.rfcReceptor}/${data.total}/${data.folioFiscal}`
     // const example = `/api/estatus/${rfcEmisor}/${rfcReceptor}/${total}/${folioFiscal}`
     fetch(URL)
@@ -33,7 +34,7 @@ const Form = ({rfcEmisor,rfcReceptor,total,folioFiscal, example, setExample}) =>
         reset()
         document.getElementById("rfcEmisor").focus();
         setLoading(false)
-        setExample(false)
+
       })
       .catch(err =>{
         setStatus(err)
@@ -64,10 +65,13 @@ const Form = ({rfcEmisor,rfcReceptor,total,folioFiscal, example, setExample}) =>
           placeholder="Folio fiscal / folioFiscal tal como aparece en la factura"
           className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
           {...register("folioFiscal", { required: true, minLength: 36, maxLength: 36 })} />
+
           <input
           id= "submit"
           type="submit"
-          className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" />
+          className={example?
+          "animate-bounce group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500":
+          "group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"}/>
         </form>
 
         {
