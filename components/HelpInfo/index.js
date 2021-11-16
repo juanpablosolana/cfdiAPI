@@ -1,6 +1,13 @@
 import ReactDOM from "react-dom";
-function HelpInfo({ state, setState }) {
-
+function HelpInfo({ state, setState, setRfcEmisor,setRfcReceprot,setTotal,setFolioFiscal,setExample }) {
+function setData(){
+  setRfcEmisor('RTU111018SV3')
+  setRfcReceprot('OEE0508161P7')
+  setTotal('34800.00')
+  setFolioFiscal('49E87987-F780-42B2-AA23-4385D7CA1D75')
+  setExample(true)
+  setState(false)
+}
   function isClose() {
     setState(false)
   }
@@ -52,7 +59,7 @@ function HelpInfo({ state, setState }) {
                 </div>
               </div>
               <div className="mt-3 sm:mt-4 sm:flex sm:justify-center lg:justify-start">
-                <div className="rounded-md shadow">
+                <div className="rounded-md shadow" onClick={setData}>
                   <a href="#" className="w-full flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
                     Probar ejemplo
                   </a>
