@@ -11,6 +11,12 @@ function setData(){
   function isClose() {
     setState(false)
   }
+  function handleEscapeKey(event) {
+    if (event.code === 'Escape') {
+      isClose()
+      return () => document.removeEventListener('keydown', handleEscapeKey)
+    }
+  }
   if (state) {
 
     return ReactDOM.createPortal(
@@ -74,7 +80,8 @@ function setData(){
           </div>
         </div>
       </div>,
-      document.getElementById("modal-root")
+      document.getElementById("modal-root"),
+    document.addEventListener('keydown', handleEscapeKey)
     );
   } else {
     return null;
