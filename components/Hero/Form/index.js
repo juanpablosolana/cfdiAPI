@@ -23,14 +23,12 @@ const Form = ({ rfcEmisor, rfcReceptor, total, folioFiscal, example, setExample 
     setStatus(null)
     setExample(false)
     const URL = `/api/estatus/${data.rfcEmisor}/${data.rfcReceptor}/${data.total}/${data.folioFiscal}`
-    // const example = `/api/estatus/${rfcEmisor}/${rfcReceptor}/${total}/${folioFiscal}`
     fetch(URL)
       .then(res => res.json())
       .then(data => {
         setStatus(data['s:Envelope']['s:Body']['ConsultaResponse']['ConsultaResult']['a:Estado']['_text'])
         setStatusCode(data['s:Envelope']['s:Body']['ConsultaResponse']['ConsultaResult']['a:CodigoEstatus']['_text'])
         setCancelCode(data['s:Envelope']['s:Body']['ConsultaResponse']['ConsultaResult']['a:EsCancelable']['_text'])
-        // document.getElementById("api-form").reset();
         reset()
         document.getElementById("rfcEmisor").focus();
         setLoading(false)
@@ -67,21 +65,24 @@ const Form = ({ rfcEmisor, rfcReceptor, total, folioFiscal, example, setExample 
             placeholder="Folio fiscal / folioFiscal tal como aparece en la factura"
             className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
             {...register("folioFiscal", { required: true, minLength: 36, maxLength: 36 })} />
-          {loading ? <Spinner /> : <input
+          {loading
+          ? <Spinner />
+          : <input
             id="submit"
             type="submit"
-            className={example ?
-              "animate-bounce group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" :
-              "group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"} />}
+            className={example
+              ? "animate-bounce group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              : "group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"} />}
         </form>
         {
-          status ?
-            <div className={status === 'Vigente' ? "bg-green-100 border-l-4 border-green-500 text-green-700 p-4" : "bg-red-100 border-l-4 border-red-500 text-red-700 p-4"}>
+          status && <div
+            className={status === 'Vigente'
+            ? "bg-green-100 border-l-4 border-green-500 text-green-700 p-4"
+            : "bg-red-100 border-l-4 border-red-500 text-red-700 p-4"}>
               <h1>Estatus: {status}</h1>
               <h2>Código: {statusCode} </h2>
               <h2>Es cancelable: {cancelCode}</h2>
             </div>
-            : null
         }
       </div>
     </div>

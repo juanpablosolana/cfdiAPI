@@ -1,22 +1,30 @@
 import ReactDOM from "react-dom";
-function HelpInfo({ state, setState, setRfcEmisor,setRfcReceprot,setTotal,setFolioFiscal,setExample }) {
-function setData(){
-  setRfcEmisor('RTU111018SV3')
-  setRfcReceprot('OEE0508161P7')
-  setTotal('34800.00')
-  setFolioFiscal('49E87987-F780-42B2-AA23-4385D7CA1D75')
-  setExample(true)
-  setState(false)
-}
-  function isClose() {
+const HelpInfo = ({
+  state,
+  setState,
+  setRfcEmisor,
+  setRfcReceprot,
+  setTotal,
+  setFolioFiscal,
+  setExample
+}) => {
+  const setData = () => {
+    setRfcEmisor('RTU111018SV3')
+    setRfcReceprot('OEE0508161P7')
+    setTotal('34800.00')
+    setFolioFiscal('49E87987-F780-42B2-AA23-4385D7CA1D75')
+    setExample(true)
     setState(false)
   }
-  function handleEscapeKey(event) {
+  const isClose = () => setState(false)
+
+  const handleEscapeKey = (event) => {
     if (event.code === 'Escape') {
       isClose()
-      return () => document.removeEventListener('keydown', handleEscapeKey)
+      return document.removeEventListener('keydown', handleEscapeKey)
     }
   }
+
   if (state) {
 
     return ReactDOM.createPortal(
@@ -81,7 +89,7 @@ function setData(){
         </div>
       </div>,
       document.getElementById("modal-root"),
-    document.addEventListener('keydown', handleEscapeKey)
+      document.addEventListener('keydown', handleEscapeKey)
     );
   } else {
     return null;

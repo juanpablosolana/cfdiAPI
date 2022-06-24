@@ -2,14 +2,16 @@ import convert from 'xml-js';
 import soapRequest from 'easy-soap-request';
 
 export default function handler(req, res) {
-  const values = new Object();
+  const values = [];
   const { slug } = req.query
-  // console.log(slug.length)
-  slug.length == 4 ? (slug.map((data, i) => {
+ if (slug.length !== 4){
+   res.status(400).json({ error: 'Bad request' })
+ }
+
+  slug.map((data, i) => {
     data = data.toString().toLowerCase().replace(/&/gi, '&amp;').replace(/ñ/gi, '&ntilde;')
     values[i] = data
-  })) : res.status(400).json({ error: 'Bad request'})
-
+  })
 
   const url = 'https://consultaqr.facturaelectronica.sat.gob.mx/ConsultaCFDIService.svc';
   const sampleHeaders = {
