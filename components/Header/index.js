@@ -19,7 +19,7 @@ const Header = () => {
         state={isOpen}
         setState={setIsOpen}
         setRfcEmisor={setRfcEmisor}
-        setRfcReceprot={setRfcReceptor}
+        setRfcReceptor={setRfcReceptor}
         setTotal={setTotal}
         setFolioFiscal={setFolioFiscal}
         setExample={setExample}

@@ -3,14 +3,14 @@ const HelpInfo = ({
   state,
   setState,
   setRfcEmisor,
-  setRfcReceprot,
+  setRfcReceptor,
   setTotal,
   setFolioFiscal,
   setExample
 }) => {
   const setData = () => {
     setRfcEmisor('RTU111018SV3')
-    setRfcReceprot('OEE0508161P7')
+    setRfcReceptor('OEE0508161P7')
     setTotal('34800.00')
     setFolioFiscal('49E87987-F780-42B2-AA23-4385D7CA1D75')
     setExample(true)
