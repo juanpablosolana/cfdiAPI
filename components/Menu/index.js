@@ -34,8 +34,7 @@ const Menu = () => {
         </div>
       </div>
       <div className="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
-        <a href="#" className="font-medium text-gray-500 hover:text-gray-900">Legales</a>
-        <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">Entrar</a>
+        <a href="https://api.cfdiapi.com" className="font-medium text-gray-500 hover:text-gray-900">Utiliza nuestra API</a>
       </div>
     </nav>
   )
