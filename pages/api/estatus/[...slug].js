@@ -1,5 +1,6 @@
 import convert from 'xml-js';
 import soapRequest from 'easy-soap-request';
+import { url, sampleHeaders, xml } from '../../../const'
 
 export default function handler(req, res) {
   const values = [];
@@ -13,27 +14,13 @@ export default function handler(req, res) {
     values[i] = data
   })
 
-  const url = 'https://consultaqr.facturaelectronica.sat.gob.mx/ConsultaCFDIService.svc';
-  const sampleHeaders = {
-    'user-agent': 'sampleTest',
-    'Content-Type': 'text/xml;charset=UTF-8',
-    'soapAction': 'http://tempuri.org/IConsultaCFDIService/Consulta',
-  };
-  const xml = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
-     <soapenv:Header/>
-     <soapenv:Body>
-        <tem:Consulta>
-           <!--Optional:-->
-           <tem:expresionImpresa><![CDATA[?re=${values[0]}?rr=${values[1]}?tt=${values[2]}?id=${values[3]}]]>
-           </tem:expresionImpresa>
-        </tem:Consulta>
-     </soapenv:Body>
-  </soapenv:Envelope>`;
-
   const data = async () => {
-    const { response } = await soapRequest({ url: url, headers: sampleHeaders, xml: xml });
+    const { response } = await soapRequest({ url, headers: sampleHeaders, xml: xml(values) });
+    const { statusCode } = response;
     const { body } = response;
-    res.send(convert.xml2json(body, { compact: true, spaces: 4 }))
+    statusCode === 200
+      ? res.status(200).send(convert.xml2json(body, { compact: true, spaces: 4 }))
+      : res.status(500).send({ error: 'Servicio del SAT en mantenimiento reintenta en unos minutos' })
   }
   data()
 }

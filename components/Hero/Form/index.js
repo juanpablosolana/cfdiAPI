@@ -26,9 +26,9 @@ const Form = ({ rfcEmisor, rfcReceptor, total, folioFiscal, example, setExample 
     fetch(URL)
       .then(res => res.json())
       .then(data => {
-        setStatus(data['s:Envelope']['s:Body']['ConsultaResponse']['ConsultaResult']['a:Estado']['_text'])
-        setStatusCode(data['s:Envelope']['s:Body']['ConsultaResponse']['ConsultaResult']['a:CodigoEstatus']['_text'])
-        setCancelCode(data['s:Envelope']['s:Body']['ConsultaResponse']['ConsultaResult']['a:EsCancelable']['_text'])
+        setStatus(data.error ? data.error : data['s:Envelope']['s:Body']['ConsultaResponse']['ConsultaResult']['a:Estado']['_text'])
+        setStatusCode(data.error ? data.error : data['s:Envelope']['s:Body']['ConsultaResponse']['ConsultaResult']['a:CodigoEstatus']['_text'])
+        setCancelCode(data.error ? data.error : data['s:Envelope']['s:Body']['ConsultaResponse']['ConsultaResult']['a:EsCancelable']['_text'])
         reset()
         document.getElementById("rfcEmisor").focus();
         setLoading(false)
