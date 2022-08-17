@@ -10,8 +10,7 @@ export default function handler(req, res) {
  }
 
   slug.map((data, i) => {
-    data = data.toString().toLowerCase().replace(/&/gi, '&amp;').replace(/ñ/gi, '&ntilde;')
-    values[i] = data
+    values[i] = data.toString().toLowerCase().replace(/&/gi, '&amp;').replace(/ñ/gi, '&ntilde;')
   })
 
   const data = async () => {
