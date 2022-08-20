@@ -1,6 +1,6 @@
-# Título del Proyecto
+# cfdi API
 
-_cfdi API_
+_Si necesitas saber como utilizar la API consulta [Documentación](https://api.cfdiapi.com/es/introduccion/)_
 
 ## Comenzando 🚀
 
@@ -37,9 +37,9 @@ npm run dev
 
 _Los test se encuentran en la carpeta test_
 
-### Analice las pruebas end-to-end 🔩
+### Ejecutar las pruebas end-to-end 🔩
 
-_Para ejecutar el script de pruebas_
+_Para correr el script de pruebas_
 
 ```
 npm run test
