@@ -1,12 +1,12 @@
 import convert from 'xml-js';
 import soapRequest from 'easy-soap-request';
-import { url, sampleHeaders, xml } from '../../../const'
+import { url, headers, xml, errors } from '../../../const'
 
 export default function handler(req, res) {
   const values = [];
   const { slug } = req.query
  if (slug.length !== 4){
-   res.status(400).json({ error: 'Bad request' })
+   res.status(400).json({ error: errors.noFormatData })
  }
 
   slug.map((data, i) => {
@@ -14,12 +14,12 @@ export default function handler(req, res) {
   })
 
   const data = async () => {
-    const { response } = await soapRequest({ url, headers: sampleHeaders, xml: xml(values) });
+    const { response } = await soapRequest({ url, headers, xml: xml(values) });
     const { statusCode } = response;
     const { body } = response;
     statusCode === 200
       ? res.status(200).send(convert.xml2json(body, { compact: true, spaces: 4 }))
-      : res.status(500).send({ error: 'Servicio del SAT en mantenimiento reintenta en unos minutos' })
+      : res.status(500).send({ error: errors.apiTimeOut })
   }
   data()
 }

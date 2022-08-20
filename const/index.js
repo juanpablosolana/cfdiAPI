@@ -1,6 +1,6 @@
 const url = 'https://consultaqr.facturaelectronica.sat.gob.mx/ConsultaCFDIService.svc'
 
-const sampleHeaders = {
+const headers = {
   'user-agent': 'sampleTest',
   'Content-Type': 'text/xml;charset=UTF-8',
   'soapAction': 'http://tempuri.org/IConsultaCFDIService/Consulta',
@@ -16,7 +16,7 @@ const xml = (values) => {
            </tem:expresionImpresa>
         </tem:Consulta>
      </soapenv:Body>
-  </soapenv:Envelope>`;
+  </soapenv:Envelope>`
 }
 
 const customCss = {
@@ -25,9 +25,15 @@ const customCss = {
   button: 'group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
 }
 
+const errors = {
+  apiTimeOut: 'Error de conexión con el servicio',
+  noFormatData: 'Bad request',
+}
+
 export {
   url,
-  sampleHeaders,
+  headers,
   xml,
-  customCss
+  customCss,
+  errors
 }
