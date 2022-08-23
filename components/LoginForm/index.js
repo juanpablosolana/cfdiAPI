@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-const Loginform = ()=>{
+const Loginform = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  return(
+  return (
     <div>
       <h1>Login Form</h1>
       <form>
@@ -21,7 +21,7 @@ const Loginform = ()=>{
         <input type="submit" value="Submit" />
       </form>
     </div>
-  )
-}
+  );
+};
 
 export default Loginform;

@@ -1,7 +1,10 @@
-import Image from 'next/image'
+import Image from "next/image";
 const Menu = () => {
   return (
-    <nav className="relative flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
+    <nav
+      className="relative flex items-center justify-between sm:h-10 lg:justify-start"
+      aria-label="Global"
+    >
       <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
         <div className="flex items-center justify-between w-full md:w-auto">
           <a href="#">
@@ -27,17 +30,22 @@ const Menu = () => {
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
-                aria-hidden="true">
-              </svg>
+                aria-hidden="true"
+              ></svg>
             </button>
           </div>
         </div>
       </div>
       <div className="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
-        <a href="https://api.cfdiapi.com" className="font-medium text-gray-500 hover:text-gray-900">Utiliza nuestra API</a>
+        <a
+          href="https://api.cfdiapi.com"
+          className="font-medium text-gray-500 hover:text-gray-900"
+        >
+          Utiliza nuestra API
+        </a>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Menu
+export default Menu;

@@ -8,7 +8,6 @@ _Estas instrucciones te permitirán obtener una copia del proyecto en funcionami
 
 Mira **Deployment** para conocer como desplegar el proyecto.
 
-
 ### Pre-requisitos 📋
 
 _Node instalado_
@@ -55,26 +54,27 @@ npm run build
 
 _Las herramientas para crear el proyecto_
 
-* [NextJS](https://nextjs.org) - El framework web usado
-* [Tailwind](https://tailwindcss.com) - Manejo de estilos
-* [easy-soap-request](https://www.npmjs.com/package/easy-soap-request) - Usado para hacer peticiones SOAP
-* [Vercel](https://vercel.com) - Servidor de despliegue
+- [NextJS](https://nextjs.org) - El framework web usado
+- [Tailwind](https://tailwindcss.com) - Manejo de estilos
+- [easy-soap-request](https://www.npmjs.com/package/easy-soap-request) - Usado para hacer peticiones SOAP
+- [Vercel](https://vercel.com) - Servidor de despliegue
 
 ## Documentación 📖
 
 Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Documentación](https://api.cfdiapi.com/es/introduccion/)
+
 ## Autores ✒️
 
 _Todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
 
-* **Pablo Solana** - *Trabajo Inicial / mantenimiento* - [Pablo Solana](https://github.com/juanpablosolana)
+- **Pablo Solana** - _Trabajo Inicial / mantenimiento_ - [Pablo Solana](https://github.com/juanpablosolana)
 
 ## Expresiones de Gratitud 🎁
 
-* Comenta a otros sobre este proyecto 📢.
-* Invitame una cerveza 🍺 o un café ☕.
-* Da las gracias públicamente 🤓.
-
+- Comenta a otros sobre este proyecto 📢.
+- Invitame una cerveza 🍺 o un café ☕.
+- Da las gracias públicamente 🤓.
 
 ---
+
 ⌨️ con ❤️ por [Pablo Solana](https://pablosolana.dev) 😊

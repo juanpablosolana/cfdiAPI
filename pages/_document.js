@@ -1,4 +1,4 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Document, { Html, Head, Main, NextScript } from "next/document";
 
 export default class MyDocument extends Document {
   render() {
@@ -29,6 +29,6 @@ export default class MyDocument extends Document {
           <div id="modal-root"></div>
         </body>
       </Html>
-    )
+    );
   }
 }

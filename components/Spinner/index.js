@@ -1,6 +1,5 @@
 const Spinner = () => {
   return (
-
     <div className="flex justify-center items-center">
       <div
         className="
@@ -12,7 +11,7 @@ const Spinner = () => {
       "
       ></div>
     </div>
-  )
-}
+  );
+};
 
-export default Spinner
+export default Spinner;

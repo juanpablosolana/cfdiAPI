@@ -6,36 +6,51 @@ const HelpInfo = ({
   setRfcReceptor,
   setTotal,
   setFolioFiscal,
-  setExample
+  setExample,
 }) => {
   const setData = () => {
-    setRfcEmisor('RTU111018SV3')
-    setRfcReceptor('OEE0508161P7')
-    setTotal('34800.00')
-    setFolioFiscal('49E87987-F780-42B2-AA23-4385D7CA1D75')
-    setExample(true)
-    setState(false)
-  }
-  const isClose = () => setState(false)
+    setRfcEmisor("RTU111018SV3");
+    setRfcReceptor("OEE0508161P7");
+    setTotal("34800.00");
+    setFolioFiscal("49E87987-F780-42B2-AA23-4385D7CA1D75");
+    setExample(true);
+    setState(false);
+  };
+  const isClose = () => setState(false);
 
   const handleEscapeKey = (event) => {
-    if (event.code === 'Escape') {
-      isClose()
-      return document.removeEventListener('keydown', handleEscapeKey)
+    if (event.code === "Escape") {
+      isClose();
+      return document.removeEventListener("keydown", handleEscapeKey);
     }
-  }
+  };
 
   if (state) {
-
     return ReactDOM.createPortal(
-      <div className="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+      <div
+        className="fixed z-10 inset-0 overflow-y-auto"
+        aria-labelledby="modal-title"
+        role="dialog"
+        aria-modal="true"
+      >
         <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
-          <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+          <div
+            className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+            aria-hidden="true"
+          ></div>
+          <span
+            className="hidden sm:inline-block sm:align-middle sm:h-screen"
+            aria-hidden="true"
+          >
+            &#8203;
+          </span>
           <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
             <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
               <div className="sm:flex sm:items-start">
-                <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-300 sm:mx-0 sm:h-10 sm:w-10" onClick={isClose}>
+                <div
+                  className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-300 sm:mx-0 sm:h-10 sm:w-10"
+                  onClick={isClose}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="512"
@@ -50,15 +65,29 @@ const HelpInfo = ({
                   </svg>
                 </div>
                 <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                  <h3 className="text-lg leading-6 font-medium text-indigo-700" id="modal-title">
+                  <h3
+                    className="text-lg leading-6 font-medium text-indigo-700"
+                    id="modal-title"
+                  >
                     Busca en la factura la siguiente información:
                   </h3>
                   <div className="mt-2">
                     <ul className="text-sm text-gray-500">
-                      <li> - RFC del emisor : Es el RFC del negocio que emite la factura </li>
-                      <li> - RFC del receptor : Debe ser tu RFC o del que hace la compra </li>
+                      <li>
+                        {" "}
+                        - RFC del emisor : Es el RFC del negocio que emite la
+                        factura{" "}
+                      </li>
+                      <li>
+                        {" "}
+                        - RFC del receptor : Debe ser tu RFC o del que hace la
+                        compra{" "}
+                      </li>
                       <li> - Total : Con centavos </li>
-                      <li>- Folio fiscal : Debes ingresarlo tal como aparece en la factura </li>
+                      <li>
+                        - Folio fiscal : Debes ingresarlo tal como aparece en la
+                        factura{" "}
+                      </li>
                     </ul>
                     <section>
                       <h3 className="text-indigo-500">Ejemplo:</h3>
@@ -66,7 +95,9 @@ const HelpInfo = ({
                         <li>RFC emisor: RTU111018SV3</li>
                         <li>RFC receptor: OEE0508161P7</li>
                         <li>Total con centavos : 34800.00</li>
-                        <li>Folio fiscal: 49E87987-F780-42B2-AA23-4385D7CA1D75</li>
+                        <li>
+                          Folio fiscal: 49E87987-F780-42B2-AA23-4385D7CA1D75
+                        </li>
                       </ul>
                     </section>
                   </div>
@@ -74,12 +105,20 @@ const HelpInfo = ({
               </div>
               <div className="mt-3 sm:mt-4 sm:flex sm:justify-center lg:justify-start">
                 <div className="rounded-md shadow" onClick={setData}>
-                  <a href="#" className="w-full flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+                  <a
+                    href="#"
+                    className="w-full flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
+                  >
                     Probar ejemplo
                   </a>
                 </div>
                 <div className="mt-2 sm:mt-0 sm:ml-2" onClick={isClose}>
-                  <a href="http://transparencia.hidalgo.gob.mx/descargables/ENTIDADES/OperadoraEventosEH/48r/ComunicacionS/2018/4trim/facturas/C-035.pdf" target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10">
+                  <a
+                    href="http://transparencia.hidalgo.gob.mx/descargables/ENTIDADES/OperadoraEventosEH/48r/ComunicacionS/2018/4trim/facturas/C-035.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10"
+                  >
                     Ver factura en pdf
                   </a>
                 </div>
@@ -89,11 +128,11 @@ const HelpInfo = ({
         </div>
       </div>,
       document.getElementById("modal-root"),
-      document.addEventListener('keydown', handleEscapeKey)
+      document.addEventListener("keydown", handleEscapeKey)
     );
   } else {
     return null;
   }
-}
+};
 
 export default HelpInfo;

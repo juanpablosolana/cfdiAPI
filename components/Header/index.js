@@ -1,17 +1,17 @@
-import Image from 'next/image'
-import Menu from '../Menu'
-import Form from '../Hero/Form'
-import HelpInfo from '../HelpInfo'
-import LeftHero from '../Hero/LeftHero'
-import { useState } from 'react'
+import Image from "next/image";
+import Menu from "../Menu";
+import Form from "../Hero/Form";
+import HelpInfo from "../HelpInfo";
+import LeftHero from "../Hero/LeftHero";
+import { useState } from "react";
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [rfcEmisor, setRfcEmisor] = useState('')
-  const [rfcReceptor, setRfcReceptor] = useState('')
-  const [total, setTotal] = useState('')
-  const [folioFiscal, setFolioFiscal] = useState('')
-  const [example, setExample] = useState('')
+  const [isOpen, setIsOpen] = useState(false);
+  const [rfcEmisor, setRfcEmisor] = useState("");
+  const [rfcReceptor, setRfcReceptor] = useState("");
+  const [total, setTotal] = useState("");
+  const [folioFiscal, setFolioFiscal] = useState("");
+  const [example, setExample] = useState("");
 
   return (
     <div className="relative bg-white overflow-hidden">
@@ -54,7 +54,10 @@ const Header = () => {
                     />
                   </div>
                   <div className="-mr-2">
-                    <button type="button" className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                    <button
+                      type="button"
+                      className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                    >
                       <span className="sr-only">Close main menu</span>
                       <svg
                         className="h-6 w-6"
@@ -63,13 +66,17 @@ const Header = () => {
                         viewBox="0 0 24 24"
                         stroke="currentColor"
                         aria-hidden="true"
-                      >
-                      </svg>
+                      ></svg>
                     </button>
                   </div>
                 </div>
                 <div className="px-2 pt-2 pb-3 space-y-1">
-                  <a href="https://api.cfdiapi.com" className="font-medium text-gray-500 hover:text-gray-900">Utiliza nuestra API</a>
+                  <a
+                    href="https://api.cfdiapi.com"
+                    className="font-medium text-gray-500 hover:text-gray-900"
+                  >
+                    Utiliza nuestra API
+                  </a>
                 </div>
               </div>
             </div>
@@ -89,6 +96,6 @@ const Header = () => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 export default Header;
