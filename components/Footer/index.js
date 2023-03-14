@@ -4,7 +4,7 @@ const Footer = () => {
       <footer className="text-gray-600 body-font bg-indigo-900">
         <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
           <p className="text-white text-sm text-center sm:text-left">
-            2021 CFDI | API Desarrollado por —
+            CFDI API Desarrollado por —
             <a
               href="https://pablosolana.dev"
               rel="noopener noreferrer"
