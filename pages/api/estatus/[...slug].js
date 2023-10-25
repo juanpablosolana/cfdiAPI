@@ -18,14 +18,18 @@ export default function handler(req, res) {
   });
 
   const data = async () => {
+    try {
     const { response } = await soapRequest({ url, headers, xml: xml(values) });
     const { statusCode } = response;
     const { body } = response;
     statusCode === 200
-      ? res
-          .status(200)
-          .send(convert.xml2json(body, { compact: true, spaces: 4 }))
-      : res.status(500).send({ error: errors.apiTimeOut });
-  };
+    ? res
+    .status(200)
+    .send(convert.xml2json(body, { compact: true, spaces: 4 }))
+    : res.status(500).send({ error: errors.apiTimeOut });
+    } catch (error) {
+      res.status(500).send({ error: errors.apiTimeOut });
+    }
+}
   data();
 }
