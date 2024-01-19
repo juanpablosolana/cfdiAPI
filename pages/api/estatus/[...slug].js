@@ -21,7 +21,7 @@ export default async function handler(req, res) {
       const { body } = response;
     res.send(convert.xml2json(body, { compact: true, spaces: 4 }));
     } catch (error) {
-      console.log(error);
+      console.error(error);
       res.status(500).send({ error: errors.apiTimeOut });
     }
 }
