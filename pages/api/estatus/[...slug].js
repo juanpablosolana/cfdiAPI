@@ -2,12 +2,11 @@ import convert from "xml-js";
 import soapRequest from "easy-soap-request";
 import { url, headers, xml, errors } from "../../../const";
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   const values = [];
   const { slug } = req.query;
-  if (slug.length !== 4) {
-    res.status(400).json({ error: errors.noFormatData });
-  }
+
+  if (slug.length !== 4) res.status(400).json({ error: errors.noFormatData });
 
   slug.map((data, i) => {
     values[i] = data
@@ -17,19 +16,12 @@ export default function handler(req, res) {
       .replace(/ñ/gi, "&ntilde;");
   });
 
-  const data = async () => {
     try {
     const { response } = await soapRequest({ url, headers, xml: xml(values) });
-    const { statusCode } = response;
-    const { body } = response;
-    statusCode === 200
-    ? res
-    .status(200)
-    .send(convert.xml2json(body, { compact: true, spaces: 4 }))
-    : res.status(500).send({ error: errors.apiTimeOut });
+      const { body } = response;
+    res.send(convert.xml2json(body, { compact: true, spaces: 4 }));
     } catch (error) {
+      console.log(error);
       res.status(500).send({ error: errors.apiTimeOut });
     }
-}
-  data();
 }
